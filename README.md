@@ -16,17 +16,10 @@ Sleep(2000);
 **User can type its name**
 
 ```cpp
-// Global Variable
-std::string G_playerName;
 
 void StoryClassName::StartStory(){
 
-    std::string PlayerName;
-	std::cout << "Please Enter your Screenname: ";
-	std::cin >> PlayerName;
-
-	TextedEngine engine(PlayerName, "Emily");
-	G_playerName = PlayerName; // Global Variable
+    TextedEngine te* = new TextedEngine("Emily");
 	system("cls");
 	Sleep(1000);
 
@@ -37,24 +30,27 @@ void StoryClassName::StartStory(){
 **Choices**
 
 ```cpp
-    // can be found in the header file.
-    Choice heychoice
+    int choice;
+	PrintChoices(choice1, choice2, choice3);
+	std::cin >> choice;
 
-    engine.PrintChoices("Hi", "Hi, " + engine.Friend, "hello");
-
-	std::cin >> heychoice;
-
-	if (heychoice == 1) {
-		engine.YourMessage("Hi", 3000);
+	switch (choice) {
+	case 1:
+		YourMessage(choice1, 2);
+		FriendsMessage(res1, 1);
+		break;
+	case 2:
+		YourMessage(choice2, 2);
+		FriendsMessage(res2, 1);
+		break;
+	case 3:
+		YourMessage(choice3, 2);
+		FriendsMessage(res3, 1);
+		break;
+	default:
+		YourMessage(failchoice, 1);
+		FriendsMessage(failres, 1);
+		break;
 	}
-	if (heychoice == 2) {
-		engine.YourMessage("Hi, " + engine.Friend, 3000);
-	}
-	if (heychoice == 3) {
-		engine.YourMessage("hello!", 3000);
-		engine.FriendsMessage("it's possible.", 1000);
-	}
-	if (heychoice > 3 || !std::cin.good()) {
-		engine.YourMessage("hello there", 1000);
-	}
+	Flush();
 ``` 
