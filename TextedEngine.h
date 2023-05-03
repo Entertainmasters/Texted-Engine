@@ -15,6 +15,7 @@
 #include <Windows.h>
 
 struct Intervals {
+	static const int AwaitingInput = 0;
 	static const int Short = 1;
 	static const int Normal = 2;
 	static const int SLong = 3;
@@ -27,8 +28,9 @@ struct Intervals {
 struct Texted {
 	double Version = 0.1;
 	int BuildNumber = 3;
+	std::string ProductName = "Texted";
 	std::string Maintainer = "Entertainmasters";
-	std::string GetFullVersion() { return "(c) Copyright " + Maintainer + " 2022 - 2023. Texted v" + std::to_string(Version); }
+	std::string GetFullVersion() { return "(c) Copyright " + Maintainer + " 2022 - 2023. " +  ProductName +" v" + std::to_string(Version); }
 };
 
 class TextedEngine
@@ -58,6 +60,8 @@ public:
 	void FriendsMessage(std::string str, int interval);
 	void PrintChoices(std::string choice1, std::string choice2, std::string choice3);
 	void SimpleChoice(std::string choice1, std::string choice2, std::string choice3, std::string res1, std::string res2, std::string res3, std::string failchoice, std::string failres);
+	int ReturnIntChoice(std::string choice1, std::string choice2, std::string choice3, int choiceInt);
+	int ReturnIntChoice(std::string choice1, std::string choice2, std::string choice3);
 public:
 	friend std::ostream& operator<<(std::ostream& out, const TextedEngine& te);
 private:

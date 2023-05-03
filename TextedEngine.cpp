@@ -29,6 +29,7 @@ TextedEngine::~TextedEngine()
 
 void TextedEngine::Configuration()
 {
+	Flush();
 	std::string PlayerName;
 	std::cout << "Please Enter your name: ";
 	std::getline(std::cin, PlayerName);
@@ -83,4 +84,19 @@ void TextedEngine::SimpleChoice(std::string choice1, std::string choice2, std::s
 		break;
 	}
 	Flush();
+}
+
+int TextedEngine::ReturnIntChoice(std::string choice1, std::string choice2, std::string choice3, int choiceInt)
+{
+	PrintChoices(choice1, choice2, choice3);
+	std::cin >> choiceInt;
+	return choiceInt;
+}
+
+int TextedEngine::ReturnIntChoice(std::string choice1, std::string choice2, std::string choice3)
+{
+	int choiceInt;
+	PrintChoices(choice1, choice2, choice3);
+	std::cin >> choiceInt;
+	return choiceInt;
 }
